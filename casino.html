@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name=parity.children[parity.selectedIndex].text"viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino</title>
+  <link rel="stylesheet" href="casino.css">
+</head>
+
+<body>
+  <header>
+    <img src="logo.png" alt="logo">
+    <h1>Casino</h1>
+    <p>
+      <span class="start">B</span>ienvenue cher Parieur,
+      </br>
+      Que desirez vous dans la vie ?
+      Peut-être la fortune.
+      Si tel est votre désir vous êtes au bon endroit.
+      Imaginez votre rêve se realiser.
+      Faites confiance en Dame Chance et soyez audacieux.
+      La fortune vous attend !
+    </p>
+  </header>
+  <main>
+    <h1>Roulette</h1>
+    <p>
+      Voici le jeu de la roulette.</br>
+      Le principe est simple.</br>
+      Choisissez un numéro, une mise et cliquer sur Go.</br>
+      Si votre pioche est 0, vous perdez votre mise.</br>
+      Si votre pioche est le numéro choisi, votre gain est multiplié par 36.</br>
+      Si votre pioche est un numéro pair et que le numéro choisi est pair ou inversement, votre gain est doublé.</br>
+      Sinon vous perdez votre mise.</br>
+      La mise minimale est de 5 mille FCFA.
+    </p>
+    <div>
+      Numéro:
+      <select name="parity" id=""></select>
+      Mise:
+      <input type="number" name="mise" id="" value="5">
+      <button>Go</button>
+      <div id="result"></div>
+      <div id="portefeuille">
+        <div>Portefeuille Joueur: <span>100 mille FCFA</span></div>
+        <div>Portefeuille Casino: <span>0</span></div>
+      </div>
+    </div>
+  </main>
+  <footer>Macao Incorporation</footer>
+  <script src="casino.js"></script>
+</body>
+
+</html>
