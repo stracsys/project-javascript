@@ -8,7 +8,7 @@ for (let i = 1; i < 37; i++) {
 let misePlayer = 5, moneyPlayer = 100, moneyComputer = 0, add;
 
 const status = document.getElementById('status');
-const mise = document.querySelector('input');
+const mise = document.querySelector('input[type="number"]');
 mise.addEventListener('input', function (event) {
   misePlayer = parseInt(event.target.value);
   if (misePlayer > 4) {
@@ -21,8 +21,6 @@ mise.addEventListener('input', function (event) {
   }
 })
 
-let randomNumber, process = false;
-
 const img = document.getElementById('img');
 const imgAttribute = (src, width, height) => {
   img.src = "Image/" + src;
@@ -31,26 +29,33 @@ const imgAttribute = (src, width, height) => {
 }
 
 const music = document.querySelector('audio');
-const result = document.getElementById('result');
-const portefeuille = document.getElementById('portefeuille');
+const playMusic = () => {
+  const son = document.querySelector('input[type="checkbox"]');
+  if (son.checked === true) music.play();
+}
+
 const win = (gain) => {
   add = misePlayer * gain;
   moneyPlayer += add;
   imgAttribute("win.jpg", "285", "280");
-  music.play();
+  playMusic();
 }
 
 const myMusic = (src) => {
   music.src = "Audio/" + src;
-  music.play();
+  playMusic();
 }
-const lost = () => {
+const lose = () => {
   moneyPlayer -= misePlayer;
   moneyComputer += misePlayer;
   imgAttribute("lose.webp", "285", "280");
   myMusic('lose.mp4');
 }
 
+const result = document.getElementById('result');
+const portefeuille = document.getElementById('portefeuille');
+
+let randomNumber, process = false;
 const number = document.getElementById('number');
 const game = () => {
   if (!process) {
@@ -64,7 +69,7 @@ const game = () => {
         randomNumber = Math.floor(Math.random() * Math.floor(37));
         if (randomNumber === 0) {
           result.textContent = randomNumber + " Lose"
-          lost();
+          lose();
         } else if (randomNumber == parity.children[parity.selectedIndex].text) {
           music.src = "Audio/win-jackpot.mp3"
           win(36);
@@ -79,12 +84,11 @@ const game = () => {
           result.textContent = randomNumber + " Impair - Win " + add + " mille FCFA"
         } else {
           if (randomNumber % 2 === 0 && parity.value === 'impair') {
-            lost();
             result.textContent = randomNumber + " Pair - Lose"
           } else {
-            lost();
             result.textContent = randomNumber + " Impair - Lose"
           }
+          lose();
         }
         portefeuille.firstElementChild.firstElementChild.textContent = moneyPlayer + " mille FCFA"
         if (moneyComputer != 0) portefeuille.lastElementChild.firstElementChild.textContent = moneyComputer + " mille FCFA"
