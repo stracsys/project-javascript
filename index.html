@@ -3,18 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name=parity.children[parity.selectedIndex].text"viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casino</title>
   <link rel="stylesheet" href="casino.css">
 </head>
 
 <body>
   <header>
-    <img src="logo.png" alt="logo">
+    <img src="Image/logo.png" alt="logo">
     <h1>Casino</h1>
     <p>
-      <span class="start">B</span>ienvenue cher Parieur,
-      </br>
+      <span class="start">B</span>ienvenue cher Parieur,</br>
       Que desirez vous dans la vie ?
       Peut-être la fortune.
       Si tel est votre désir vous êtes au bon endroit.
@@ -24,23 +23,27 @@
     </p>
   </header>
   <main>
+    <img id="img" src="Image/win-lose.jpg" width="285" height="280" alt="stat">
+    <audio src=""></audio>
     <h1>Roulette</h1>
     <p>
-      Voici le jeu de la roulette.</br>
-      Le principe est simple.</br>
-      Choisissez un numéro, une mise et cliquer sur Go.</br>
-      Si votre pioche est 0, vous perdez votre mise.</br>
-      Si votre pioche est le numéro choisi, votre gain est multiplié par 36.</br>
-      Si votre pioche est un numéro pair et que le numéro choisi est pair ou inversement, votre gain est doublé.</br>
-      Sinon vous perdez votre mise.</br>
+      <span class="start">V</span>oici le jeu de la roulette.
+      Le principe est simple.
+      Choisissez un numéro, une mise et cliquer sur Go.
+      Si votre pioche est 0, vous perdez votre mise.
+      Si votre pioche est le numéro choisi, votre gain est multiplié par 36.
+      Si votre pioche est un numéro pair et que le numéro choisi est pair ou inversement, votre gain est doublé.
+      Sinon vous perdez votre mise.
       La mise minimale est de 5 mille FCFA.
     </p>
     <div>
+      <div id="status">Faites vos Jeux</div>
       Numéro:
       <select name="parity" id=""></select>
       Mise:
-      <input type="number" name="mise" id="" value="5">
+      <input type="number" name="mise" id="" value="5"> mille FCFA
       <button>Go</button>
+      <div id></div>
       <div id="result"></div>
       <div id="portefeuille">
         <div>Portefeuille Joueur: <span>100 mille FCFA</span></div>
