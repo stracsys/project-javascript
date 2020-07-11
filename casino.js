@@ -66,15 +66,15 @@ const game = () => {
           result.textContent = randomNumber + " Lose"
           lost();
         } else if (randomNumber == parity.children[parity.selectedIndex].text) {
-          music.src = "win-jackpot.mp3"
+          music.src = "Audio/win-jackpot.mp3"
           win(36);
           result.textContent = randomNumber + " Parfait - Win " + add + " mille FCFA"
         } else if (randomNumber % 2 === 0 && parity.value === 'pair') {
-          music.src = "win.mp3"
+          music.src = "Audio/win.mp3"
           win(2);
           result.textContent = randomNumber + " Pair - Win " + add + " mille FCFA"
         } else if (randomNumber % 2 != 0 && parity.value === 'impair') {
-          music.src = "win.mp3"
+          music.src = "Audio/win.mp3"
           win(2);
           result.textContent = randomNumber + " Impair - Win " + add + " mille FCFA"
         } else {
