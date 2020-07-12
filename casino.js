@@ -5,7 +5,7 @@ for (let i = 1; i < 37; i++) {
   else parity.innerHTML += "<option value=\"impair\">" + i + "</option>"
 }
 
-let misePlayer, moneyPlayer = 100, moneyComputer = 0, add;
+let misePlayer = 5, moneyPlayer = 100, moneyComputer = 0, add;
 
 const status = document.getElementById('status');
 const mise = document.querySelector('input[type="number"]');
@@ -53,7 +53,7 @@ const lose = () => {
 }
 
 const result = document.getElementById('result');
-const portefeuille = document.getElementById('portefeuille');
+const money = document.getElementsByClassName('money');
 
 let randomNumber, process = false;
 const number = document.getElementById('number');
@@ -90,8 +90,8 @@ const game = () => {
           }
           lose();
         }
-        portefeuille.firstElementChild.firstElementChild.textContent = moneyPlayer + " mille FCFA"
-        if (moneyComputer != 0) portefeuille.lastElementChild.firstElementChild.textContent = moneyComputer + " mille FCFA"
+        money[0].textContent = moneyPlayer + " mille FCFA"
+        if (moneyComputer != 0) money[1].textContent = moneyComputer + " mille FCFA"
         status.textContent = "Faites vos Jeux"
         status.style.color = "green"
         process = false;
