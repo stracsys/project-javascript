@@ -13,6 +13,11 @@
   src: url(Font/KaushanScript-Regular.otf);
 }
 
+@font-face {
+  font-family: 'Chunk Five';
+  src: url(Font/ChunkFive-Regular.otf);
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -78,6 +83,7 @@ button {
   display: flex;
   justify-content: space-between;
   margin: 5px;
+  font-family: 'Chunk Five';
 }
 
 input {
