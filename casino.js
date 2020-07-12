@@ -5,7 +5,7 @@ for (let i = 1; i < 37; i++) {
   else parity.innerHTML += "<option value=\"impair\">" + i + "</option>"
 }
 
-let misePlayer = 5, moneyPlayer = 100, moneyComputer = 0, add;
+let misePlayer, moneyPlayer = 100, moneyComputer = 0, add;
 
 const status = document.getElementById('status');
 const mise = document.querySelector('input[type="number"]');
