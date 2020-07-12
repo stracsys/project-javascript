@@ -42,7 +42,7 @@ body {
   text-align: justify;
   margin: 15px;
 } #status {
-  color: green;
+  color: red;
 } button {
   border-radius: 25px;
   font-weight: bold;
