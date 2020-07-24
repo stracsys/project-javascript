@@ -5,13 +5,13 @@ for (let i = 1; i < 37; i++) {
   else parity.innerHTML += "<option value=\"impair\">" + i + "</option>"
 }
 
-let misePlayer = 5, moneyPlayer = 100, moneyComputer = 0, add;
+let misePlayer, moneyPlayer = 100, moneyComputer = 0, add;
 
 const status = document.getElementById('status');
 const mise = document.querySelector('input[type="number"]');
+
 mise.addEventListener('input', function (event) {
-  misePlayer = parseInt(event.target.value);
-  if (misePlayer > 4) {
+  if (event.target.value > 0) {
     status.style.color = "green"
     status.textContent = "Faites vos Jeux"
   }
@@ -56,21 +56,22 @@ const result = document.getElementById('result');
 const money = document.getElementsByClassName('money');
 
 let randomNumber, process = false;
-const number = document.getElementById('number');
 const game = () => {
   if (!process) {
-    if (misePlayer > 4) {
+    misePlayer = parseInt(mise.value);
+    if (misePlayer > 0) {
       process = true;
       imgAttribute("win-lose.jpg", "285", "280");
       myMusic('suspense.mp3');
       status.textContent = "Les jeux sont faits"
       result.textContent = ""
+
       setTimeout(() => {
         randomNumber = Math.floor(Math.random() * Math.floor(37));
         if (randomNumber === 0) {
           result.textContent = randomNumber + " Lose"
           lose();
-        } else if (randomNumber == parity.children[parity.selectedIndex].text) {
+        } else if (randomNumber == parity[parity.selectedIndex].text) {
           music.src = "Audio/win-jackpot.mp3"
           win(36);
           result.textContent = randomNumber + " Parfait - Win " + add + " mille FCFA"
@@ -96,8 +97,9 @@ const game = () => {
         status.style.color = "green"
         process = false;
       }, 5000);
+
     } else {
-      status.textContent = "Saisissez un montant >= 5 mille FCFA"
+      status.textContent = "Entrez une mise >= mille FCFA"
       result.textContent = ""
     }
   } else {
