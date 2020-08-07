@@ -100,7 +100,9 @@ footer {
   border-radius: 10px;
   font-style: italic;
   padding: 5px;
-} main, footer {
+}
+
+main, footer {
   margin: 0 auto 0 auto;
 }
 
