@@ -24,34 +24,39 @@
   </header>
   <main>
     <div id="float">
-      <img id="img" src="Image/win-lose.jpg" width="285" height="270" alt="win or lose">
-      <div>
-        Son <input type="checkbox" name="" id="" checked>
-      </div>
+      Son <input type="checkbox" checked>
+      <audio></audio>
     </div>
-    <audio></audio>
     <h1>Roulette</h1>
     <p>
       <span class="start">V</span>oici le jeu de la roulette.
       Le principe est simple.
-      Choisissez un numéro, une mise, cliquer sur Go et patientez 5 sécondes.
+      Choisissez un numéro, une mise, cliquer sur Go et patientez 5 secondes.
       Si votre pioche est 0, vous perdez votre mise.
-      Si votre pioche est le numéro choisi, votre gain est multiplié par 36.
-      Si votre pioche est un numéro pair et que le numéro choisi est pair ou inversement, votre gain est doublé.
+      Si votre pioche est le numéro choisi, vos gains s'élèvent à 36 X votre mise.
+      Si votre pioche est un numéro pair et que votre choix est l'option "Pair" ou inversement, vos gains s'élèvent à 2
+      X votre mise.
       Sinon vous perdez votre mise.
       La mise minimale est de mille FCFA.
     </p>
     <div>
       <div id="status">Entrez une mise</div>
       Numéro:
-      <select name="parity" id=""></select>
+      <select>
+        <option value="pair">Pair</option>
+        <option value="impair">Impair</option>
+      </select>
       Mise:
-      <input type="number" name="mise" id=""> mille FCFA
+      <input type="number" name="mise"> mille FCFA
       <button>Go</button>
-      <div id="result"></div>
       <div id="portefeuille">
         <div>Portefeuille Joueur: <span class="money">100 mille FCFA</span></div>
         <div>Portefeuille Casino: <span class="money">0</span></div>
+      </div>
+      <div id="animation">
+        <img id="img" src="Image/win-lose.jpg" width="300" height="300" alt="win or lose">
+        <canvas id="result" width="300" height="300">Non reconnu !</canvas>
+        <img id="rotation" src="./Image/roulette.png" width="300" height="300" alt="">
       </div>
     </div>
   </main>

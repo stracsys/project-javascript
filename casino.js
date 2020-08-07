@@ -1,8 +1,8 @@
 const parity = document.querySelector('select');
 for (let i = 1; i < 37; i++) {
-  if (i === 1) parity.innerHTML += "<option value=\"impair\" selected>" + i + "</option>"
-  else if (i % 2 === 0) parity.innerHTML += "<option value=\"pair\">" + i + "</option>"
-  else parity.innerHTML += "<option value=\"impair\">" + i + "</option>"
+  if (i === 1) parity.innerHTML += "<option>" + i + "</option>"
+  else if (i % 2 === 0) parity.innerHTML += "<option>" + i + "</option>"
+  else parity.innerHTML += "<option>" + i + "</option>"
 }
 
 let misePlayer, moneyPlayer = 100, moneyComputer = 0, add;
@@ -17,15 +17,15 @@ mise.addEventListener('input', function (event) {
   }
   else {
     status.style.color = "red"
-    status.textContent = "Montant Invalide";
+    status.textContent = "Mise Invalide";
   }
 })
 
 const img = document.getElementById('img');
-const imgAttribute = (src, width, height) => {
+const imgAttribute = (src) => {
   img.src = "Image/" + src;
-  img.width = width;
-  img.height = height;
+  img.width = "300";
+  img.height = "300";
 }
 
 const music = document.querySelector('audio');
@@ -34,73 +34,76 @@ const playMusic = () => {
   if (son.checked === true) music.play();
 }
 
-const win = (gain) => {
-  add = misePlayer * gain;
-  moneyPlayer += add;
-  imgAttribute("win.jpg", "285", "280");
-  playMusic();
-}
-
 const myMusic = (src) => {
   music.src = "Audio/" + src;
   playMusic();
 }
+
+let canvas = document.getElementById('result');
+let ctx = canvas.getContext('2d');
+ctx.font = "50pt Kaushan"
+
+const win = (gain) => {
+  add = misePlayer * gain;
+  moneyPlayer += add;
+  ctx.fillStyle = "green";
+  imgAttribute("win.jpg");
+  playMusic();
+}
+
 const lose = () => {
   moneyPlayer -= misePlayer;
   moneyComputer += misePlayer;
-  imgAttribute("lose.webp", "285", "280");
+  ctx.fillStyle = "rgb(190, 56, 3)";
+  imgAttribute("lose.webp");
   myMusic('lose.mp4');
 }
 
 const result = document.getElementById('result');
 const money = document.getElementsByClassName('money');
-
+const rotation = document.getElementById('rotation');
 let randomNumber, process = false;
 const game = () => {
+
+  ctx.clearRect(0, 0, 300, 300);
+
   if (!process) {
     misePlayer = parseInt(mise.value);
-    if (misePlayer > 0) {
+    if (misePlayer > 0 && misePlayer <= moneyPlayer) {
       process = true;
-      imgAttribute("win-lose.jpg", "285", "280");
+      imgAttribute("win-lose.jpg");
       myMusic('suspense.mp3');
       status.textContent = "Les jeux sont faits"
-      result.textContent = ""
-
+      rotation.style.animationPlayState = "running"
       setTimeout(() => {
         randomNumber = Math.floor(Math.random() * Math.floor(37));
-        if (randomNumber === 0) {
-          result.textContent = randomNumber + " Lose"
-          lose();
-        } else if (randomNumber == parity[parity.selectedIndex].text) {
+        rotation.style.animationPlayState = "paused"
+
+        if (randomNumber === 0) lose();
+        else if (randomNumber == parity[parity.selectedIndex].text) {
           music.src = "Audio/win-jackpot.mp3"
           win(36);
-          result.textContent = randomNumber + " Parfait - Win " + add + " mille FCFA"
         } else if (randomNumber % 2 === 0 && parity.value === 'pair') {
           music.src = "Audio/win.mp3"
           win(2);
-          result.textContent = randomNumber + " Pair - Win " + add + " mille FCFA"
         } else if (randomNumber % 2 != 0 && parity.value === 'impair') {
           music.src = "Audio/win.mp3"
           win(2);
-          result.textContent = randomNumber + " Impair - Win " + add + " mille FCFA"
-        } else {
-          if (randomNumber % 2 === 0 && parity.value === 'impair') {
-            result.textContent = randomNumber + " Pair - Lose"
-          } else {
-            result.textContent = randomNumber + " Impair - Lose"
-          }
-          lose();
-        }
+        } else lose();
+
+        ctx.fillText(randomNumber, 120, 150);
         money[0].textContent = moneyPlayer + " mille FCFA"
         if (moneyComputer != 0) money[1].textContent = moneyComputer + " mille FCFA"
         status.textContent = "Faites vos Jeux"
         status.style.color = "green"
         process = false;
-      }, 5000);
+      }, 4000);
 
+    } else if (misePlayer > moneyPlayer) {
+      status.textContent = "Fond Insuffisant"
+      status.style.color = "red"
     } else {
       status.textContent = "Entrez une mise >= mille FCFA"
-      result.textContent = ""
     }
   } else {
     status.textContent = "Patientez"

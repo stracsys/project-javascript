@@ -107,9 +107,28 @@ footer {
 .money {
   font-family: 'Kaushan';
   font-weight: bolder;
-  color: red;
+  color: red
 }
 
-#result {
-  font-family: 'Kaushan';
+#rotation {
+  transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes rotating {
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(160deg);
+  }
+}
+
+#rotation {
+  -webkit-animation: rotating 1s linear infinite;
+  animation-play-state: paused;
+}
+
+#animation {
+  display: flex;
+  justify-content: space-between;
 }
