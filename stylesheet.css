@@ -124,7 +124,7 @@ footer {
 }
 
 #rotation {
-  -webkit-animation: rotating 1s linear infinite;
+  -webkit-animation: rotating 5s linear infinite;
   animation-play-state: paused;
 }
 
