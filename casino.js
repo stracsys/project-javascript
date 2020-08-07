@@ -97,7 +97,7 @@ const game = () => {
         status.textContent = "Faites vos Jeux"
         status.style.color = "green"
         process = false;
-      }, 4000);
+      }, 5000);
 
     } else if (misePlayer > moneyPlayer) {
       status.textContent = "Fond Insuffisant"
