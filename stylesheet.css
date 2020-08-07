@@ -121,12 +121,12 @@ main, footer {
       -webkit-transform: rotate(0deg);
   }
   to{
-      -webkit-transform: rotate(160deg);
+      -webkit-transform: rotate(360deg);
   }
 }
 
 #rotation {
-  -webkit-animation: rotating 5s linear infinite;
+  -webkit-animation: rotating 5s infinite;
   animation-play-state: paused;
 }
 
